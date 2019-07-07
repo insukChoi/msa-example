@@ -7,9 +7,9 @@
 
 ## 설치 및 Test URL
 
-1. Intellij 개발툴 설치 (https://www.jetbrains.com/idea/download/#section=mac)
+### Intellij 개발툴 설치 (https://www.jetbrains.com/idea/download/#section=mac)
 
-2. RabbitMQ 설치 (https://www.rabbitmq.com/download.html)
+### RabbitMQ 설치 (https://www.rabbitmq.com/download.html)
 
 - 사용자 추가
 
@@ -24,15 +24,15 @@ rabbitmqctl set_permissions -p / config ".*" ".*" ".*"
 rabbitmq-plugins enable rabbitmq_management
 ```
 
-3.     JDK 1.8 설치
+### JDK 1.8 설치
 
-4.     개발툴 세팅
+### 개발툴 세팅
 
   - Preferences->Build->Compiler->Annotation Processors -> Enable annotation processing 체크
   - Preferences->Plugins Lombok Plugin 설치
   
 
-5.     빌드 및 실행 순서
+### 빌드 및 실행 순서
 
 * Cloudconfig
 
@@ -45,7 +45,7 @@ rabbitmq-plugins enable rabbitmq_management
 * Api-user,api-product,api-order,api-delivery
 
 
-6. WebGUI
+### WebGUI
 
  * Eureka : http://localhost:9000
 
@@ -54,7 +54,7 @@ rabbitmq-plugins enable rabbitmq_management
  * RabbitMQ : http://localhost:15672
 
 
-7. API TEST
+### API TEST
 
  * User API : http://localhost:8081/v1/user/{id}
 
