@@ -2,64 +2,72 @@
 사내 교육 MSA
 
 
-1.     Intellij 개발툴 설치 (https://www.jetbrains.com/idea/download/#section=mac)
+## Architecture
+![MSA Architecture](./Architecture.PNG)
 
-2.     RabbitMQ 설치 (https://www.rabbitmq.com/download.html)
+## 설치 및 Test URL
 
-A.     사용자 추가
+1. Intellij 개발툴 설치 (https://www.jetbrains.com/idea/download/#section=mac)
 
-  i.         rabbitmqctl add_user config config
-  
-  ii.        rabbitmqctl set_user_tags config administrator
-  
-  iii.       rabbitmqctl set_permissions -p / config ".*" ".*" ".*"
+2. RabbitMQ 설치 (https://www.rabbitmq.com/download.html)
 
-B.      GUI Console사용하기
+- 사용자 추가
 
-  i.         rabbitmq-plugins enable rabbitmq_management
+```sh
+rabbitmqctl add_user config config
+rabbitmqctl set_user_tags config administrator
+rabbitmqctl set_permissions -p / config ".*" ".*" ".*"
+```
+
+- GUI Console사용하기
+```sh
+rabbitmq-plugins enable rabbitmq_management
+```
 
 3.     JDK 1.8 설치
 
 4.     개발툴 세팅
 
-A.     Preferences->Build->Compiler->Annotation Processors -> Enable annotation processing 체크
-
-B.      Preferences->Plugins Lombok Plugin 설치
+  - Preferences->Build->Compiler->Annotation Processors -> Enable annotation processing 체크
+  - Preferences->Plugins Lombok Plugin 설치
+  
 
 5.     빌드 및 실행 순서
 
-A.     Cloudconfig
+* Cloudconfig
 
-B.      Service-discovery
+* Service-discovery
 
-C.      Api-gateway
+* Api-gateway
 
-D.     Hystrix-dashboard
+* Hystrix-dashboard
 
-E.      Api-user,api-product,api-order,api-delivery
+* Api-user,api-product,api-order,api-delivery
 
-6.     WebGUI
 
-A.     Eureka : http://localhost:9000
+6. WebGUI
 
-B.      Hystrix : http://localhost:8998/hystrix/monitor?stream=http://localhost:8998/turbine.stream
+ * Eureka : http://localhost:9000
 
-C.      RabbitMQ : http://localhost:15672
+ * Hystrix : http://localhost:8998/hystrix/monitor?stream=http://localhost:8998/turbine.stream
 
-7.     API TEST
+ * RabbitMQ : http://localhost:15672
 
-A.     User API : http://localhost:8081/v1/user/{id}
 
-B.      Product API : http://localhost:8082/v1/product/{id}
+7. API TEST
 
-C.      Order API : http://localhost:8083/v1/order/{id}
+ * User API : http://localhost:8081/v1/user/{id}
 
-D.     Delivery API : http://localhost:8084/v1/delivery/{id}
+ * Product API : http://localhost:8082/v1/product/{id}
 
-E.      API Gateway : http://localhost:8000/{서비스도메인}/{API Endpoint}
+ * Order API : http://localhost:8083/v1/order/{id}
 
-       i.   http://localhost:8000/user/v1/user/u001
+ * Delivery API : http://localhost:8084/v1/delivery/{id}
 
-       ii.  http://localhost:8000/product/v1/product/0001
+ * API Gateway : http://localhost:8000/{서비스도메인}/{API Endpoint}
 
-       iii. http://localhost:8000/order/v1/order?userId=u0002
+      *  http://localhost:8000/user/v1/user/u001
+
+      * http://localhost:8000/product/v1/product/0001
+
+      * http://localhost:8000/order/v1/order?userId=u0002
