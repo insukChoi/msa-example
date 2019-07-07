@@ -58,8 +58,8 @@ D.     Delivery API : http://localhost:8084/v1/delivery/{id}
 
 E.      API Gateway : http://localhost:8000/{서비스도메인}/{API Endpoint}
 
-                         i.         http://localhost:8000/user/v1/user/u001
+       i.   http://localhost:8000/user/v1/user/u001
 
-                        ii.         http://localhost:8000/product/v1/product/0001
+       ii.  http://localhost:8000/product/v1/product/0001
 
-                       iii.         http://localhost:8000/order/v1/order?userId=u0002
+       iii. http://localhost:8000/order/v1/order?userId=u0002
