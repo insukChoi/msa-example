@@ -1,0 +1,120 @@
+#공통설정
+info:
+  application:
+    name: ${spring.application.name}
+    version: ${spring.application.version}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+spring:
+  application:
+    name: api-gateway
+    version: 0.0.1
+  cloud:
+    config:
+      name: api-gateway
+      label: master
+      uri: http://localhost:8888
+
+server:
+  port: 8000
+
+
+---
+spring:
+  application:
+    name: api-gateway
+  profiles: local
+  cloud:
+    config:
+      name: api-gateway
+      uri: http://localhost:8888
+      profile: local
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: config
+    password: config
+    virtual-host: /config
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.netflix.ribbon: DEBUG
+    org.springframework.cloud.netflix.zuul: DEBUG
+
+#zuul설정
+zuul:
+  retryable: true
+  strip-prefix: true
+  prefix: /
+  ignored-services: '*'
+  routes:
+    api-user:
+      path: /user/**
+      service-id: api-user-dev
+    api-product:
+      path: /product/**
+      service-id: api-product-dev
+    api-order:
+      path: /order/**
+      service-id: api-order-dev
+    api-delivery:
+      path: /delivery/**
+      service-id: api-delivery-dev
+  host:
+    max-total-connections: 100
+    max-per-route-connections: 20
+    connect-timeout-millis: 15000
+    socket-timeout-millis: 60000
+  ribbon-isolation-strategy: thread
+
+ribbon:
+  ConnectionTimeout: 5000
+  ReadTimeout: 2000
+
+---
+spring:
+  application:
+    name: api-gateway-dev
+  profiles: dev
+  cloud:
+    config:
+      name: api-gateway
+      uri: http://localhost:8888
+      profile: dev
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: config
+    password: config
+    virtual-host: /config              
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+      
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.netflix.ribbon: DEBUG
+    org.springframework.cloud.netflix.zuul: DEBUG
+    

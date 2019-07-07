@@ -1,0 +1,51 @@
+#공통설정
+info:
+  application:
+    name: ${spring.application.name}
+    version: ${spring.application.version}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+spring:
+  application:
+    name: api-user
+    version: 0.0.1
+
+server:
+  port: 8081
+
+---
+spring:
+  application:
+    name: api-user-dev
+  profiles: dev
+  cloud:
+    config:
+      name: api-user
+      profile: dev
+      uri: http://localhost:8888
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: config
+    password: config
+    virtual-host: /config              
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+      
+logging:
+  level:
+    root: INFO
+    com.skcomms.dev.api: DEBUG
+    
+    
+          

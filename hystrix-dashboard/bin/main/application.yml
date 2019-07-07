@@ -1,0 +1,58 @@
+#공통설정
+info:
+  application:
+    name: ${spring.application.name}
+    version: ${spring.application.version}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+spring:
+  application:
+    name: service-discovery
+    version: 0.0.1
+  cloud:
+    config:
+      name: service-discovery
+      label: master
+      uri: http://localhost:8888
+
+server:
+  port: 9000
+           
+---
+spring:
+  application:
+    name: service-discovery-dev
+  profiles: dev
+  cloud:
+    config:
+      name: service-discovery
+      label: dev
+      uri: http://localhost:8888
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: config
+    password: config
+    virtual-host: /config              
+
+eureka:
+  server:
+    renewal-percent-threshold: 0.49    
+  instance:
+    hostname: localhost       
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${hystrix.instance.hostname}:${server.port}/hystrix/
+      
+logging:
+  level:
+    root: ERROR
+    org.springframework.cloud.netflix.eureka: DEBUG
+    

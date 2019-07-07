@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework.cloud:spring-cloud-starter-bus-amqp:2.0.0.RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-bus-amqp/2.0.0.RELEASE/4984ffb9915d240eed5d7902477818e359700879/spring-cloud-starter-bus-amqp-2.0.0.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-bus-amqp/2.0.0.RELEASE/811669f5454003ae0f7a3a3093902e47fd5a98d4/spring-cloud-starter-bus-amqp-2.0.0.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,44 @@
+#공통설정
+info:
+  application:
+    name: ${spring.application.name}
+    version: ${spring.application.version}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  application:
+    name: cloudconfig
+    version: 0.0.1
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/JiHyunSim/msa-example.git
+
+server:
+  port: 8888
+           
+---
+spring:
+  application:
+    name: cloudconfig-dev
+  profiles: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/JiHyunSim/msa-example.git
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: config
+    password: config
+    virtual-host: /config

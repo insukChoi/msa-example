@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="api-gateway" external.linked.project.path="$MODULE_DIR$/../../api-gateway" external.root.project.path="$MODULE_DIR$/../../api-gateway" external.system.id="GRADLE" external.system.module.group="com.skcomms.dev" external.system.module.version="0.0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../api-gateway">
+      <excludeFolder url="file://$MODULE_DIR$/../../api-gateway/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../api-gateway/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../api-gateway/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

@@ -1,0 +1,61 @@
+#공통설정
+info:
+  application:
+    name: ${spring.application.name}
+    version: ${spring.application.version}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+spring:
+  application:
+    name: hystrix-dashboard
+    version: 0.0.1
+  cloud:
+    config:
+      name: hystrix-dashboard
+      label: master
+      uri: http://localhost:8888
+
+server:
+  port: 8998
+
+turbine:
+  app-config: api-user,api-product,api-order,api-delivery
+  cluster-name-expression: new String("default")
+
+---
+spring:
+  application:
+    name: hystrix-dashboard-dev
+  profiles: dev
+  cloud:
+    config:
+      name: hystrix-dashboard
+      label: dev
+      uri: http://localhost:8888
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: config
+    password: config
+    virtual-host: /config              
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.netflix: DEBUG
+
+turbine:
+  app-config: api-user-dev,api-product-dev,api-order-dev,api-delivery-dev
+  cluster-name-expression: new String("default")

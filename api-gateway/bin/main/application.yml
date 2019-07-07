@@ -1,0 +1,116 @@
+#공통설정
+info:
+  application:
+    name: ${spring.application.name}
+    version: ${spring.application.version}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+spring:
+  application:
+    name: api-gateway
+    version: 0.0.1
+  cloud:
+    config:
+      name: api-gateway
+      label: master
+      uri: http://localhost:8888
+
+server:
+  port: 8000
+  
+#zuul설정
+zuul:
+  retryable: true
+  strip-prefix: true
+  prefix: /
+  ignored-services: '*'
+  routes:
+    service-user:
+      path: /user/**
+      service-id: service-user
+    api-service1:
+      path: /service1/**
+    api-service2:
+      path: /service2/**
+    api-service3:
+      path: /service3/**
+  host:
+    max-total-connections: 5000
+    max-per-route-connections: 2000
+    connect-timeout-millis: 15000
+    socket-timeout-millis: 60000
+  ribbon-isolation-strategy: THREAD
+        
+ribbon:
+  ConnectionTimeout: 5000
+  ReadTimeout: 2000
+  
+
+       
+---
+spring:
+  application:
+    name: api-gateway-dev
+  profiles: dev
+  cloud:
+    config:
+      name: api-gateway
+      label: dev
+      uri: http://localhost:8888
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: config
+    password: config
+    virtual-host: /config              
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+      
+logging:
+  level:
+    root: ERROR
+    org.springframework.cloud.netflix.ribbon: DEBUG
+    org.springframework.cloud.netflix.zuul: DEBUG
+    
+#zuul설정
+zuul:
+  retryable: true
+  strip-prefix: true
+  prefix: /
+  ignored-services: '*'
+  routes:
+    service-user:
+      path: /user/**
+      service-id: service-user-dev
+    api-service1:
+      path: /service1/**
+      service-id: api-service1-dev
+    api-service2:
+      path: /service2/**
+      service-id: api-service2-dev
+    api-service3:
+      path: /service3/**
+      service-id: api-service3-dev
+  host:
+    max-total-connections: 5000
+    max-per-route-connections: 2000
+    connect-timeout-millis: 15000
+    socket-timeout-millis: 60000
+  ribbon-isolation-strategy: THREAD
+        
+ribbon:
+  ConnectionTimeout: 5000
+  ReadTimeout: 2000    
+          
