@@ -9,8 +9,10 @@
 A.     사용자 추가
 
   i.         rabbitmqctl add_user config config
-  ii.         rabbitmqctl set_user_tags config administrator
-  iii.         rabbitmqctl set_permissions -p / config ".*" ".*" ".*"
+  
+  ii.        rabbitmqctl set_user_tags config administrator
+  
+  iii.       rabbitmqctl set_permissions -p / config ".*" ".*" ".*"
 
 B.      GUI Console사용하기
 
